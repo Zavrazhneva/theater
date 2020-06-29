@@ -45,13 +45,14 @@ function statement(invoice, plays) {
         const play = plays[perf.playId];
         let thisAmount = 0;
         switch (play.type) {
-            case "tragedy":
+            case "tragedy": {
                 thisAmount = 40000;
                 if (perf.audience > 30) {
                     thisAmount += 1000 * (perf.audience - 30);
                 }
                 break;
-            case "comedy":
+            }
+            case "comedy": {
                 thisAmount = 30000;
                 if (perf.audience > 20) {
                     thisAmount += 10000 + 500 * (perf.audience - 20);
@@ -59,6 +60,7 @@ function statement(invoice, plays) {
                 thisAmount += 300 * perf.audience;
                 countComedy += 1;
                 break;
+            }
             default:
                 throw new Error(`неизвестный тип: ${perf.type}`);
         }
